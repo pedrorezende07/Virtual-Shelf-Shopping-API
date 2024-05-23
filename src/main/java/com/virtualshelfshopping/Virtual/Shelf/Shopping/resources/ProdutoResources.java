@@ -59,11 +59,11 @@ public class ProdutoResources {
 
     @GetMapping("/{id}")
     public ResponseEntity<Produto> getById(@PathVariable("id") Long id) {
-        Optional<Produto> produtoList = produtoRepository.findById(Integer.valueOf(String.valueOf(id)));
-        if (!produtoList.isPresent()) {
+        Optional<Produto> produto = produtoRepository.findById(id.intValue());
+        if (!produto.isPresent()) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(produtoList.get());
+        return ResponseEntity.ok(produto.get());
     }
 
     @DeleteMapping("/{id}")

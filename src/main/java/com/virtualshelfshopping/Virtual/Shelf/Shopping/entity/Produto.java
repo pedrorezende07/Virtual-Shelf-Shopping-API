@@ -1,6 +1,7 @@
 package com.virtualshelfshopping.Virtual.Shelf.Shopping.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,28 +12,28 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_produto")
-    private int codProduto;
+    private Long codProduto;
 
     private String nome;
     private float valor;
     private String descricao;
 
-    @ElementCollection
-    private List<String> categoria;
+    @ManyToOne
+    @JoinColumn(name = "cod_categoria")
+    private Categoria categoria;
 
-    @OneToOne(mappedBy = "produto", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "cod_estoque")
     private Estoque estoque;
-
-
 
     // Getters and setters
 
-    public long getCodProduto() {
+
+    public Long getCodProduto() {
         return codProduto;
     }
 
-    public void setCodProduto(int codProduto) {
+    public void setCodProduto(Long codProduto) {
         this.codProduto = codProduto;
     }
 
@@ -60,11 +61,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public List<String> getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(List<String> categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
@@ -76,8 +77,7 @@ public class Produto {
         this.estoque = estoque;
     }
 
-
-    public void update(int id, Produto produto) {
+    public void update(Long id, Produto produto) {
         this.codProduto = id;
         this.nome = produto.getNome();
         this.valor = produto.getValor();
