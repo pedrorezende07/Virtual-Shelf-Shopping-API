@@ -1,6 +1,6 @@
 package com.virtualshelfshopping.Virtual.Shelf.Shopping.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,11 +11,6 @@ public class Estoque {
     private int id;
 
     private int quantProduto;
-
-    @OneToOne
-    @JoinColumn(name = "cod_produto")
-    @JsonBackReference
-    private Produto produto;
 
     // Getters and setters
 
@@ -35,11 +30,4 @@ public class Estoque {
         this.quantProduto = quantProduto;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
 }
