@@ -16,11 +16,11 @@ import java.util.Optional;
 public class UsuarioResources {
 
     @Autowired
-    private UsuarioRepository usuriousRepository;
+    private UsuarioRepository usuariousRepository;
 
     @PostMapping
     public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario) {
-        Usuario saved = usuriousRepository.save(usuario);
+        Usuario saved = usuariousRepository.save(usuario);
         if (saved == null) {
             return ResponseEntity.noContent().build();
         }
@@ -32,13 +32,13 @@ public class UsuarioResources {
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> alterar(@PathVariable("id") Long id,
                                            @RequestBody Usuario usuario) {
-        Optional<Usuario> usuarioDoBanco = usuriousRepository.findById(String.valueOf(id));
+        Optional<Usuario> usuarioDoBanco = usuariousRepository.findById(String.valueOf(id));
         if (usuarioDoBanco.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
         usuarioDoBanco.get().update(id, usuario);
-        Usuario saved = usuriousRepository.save(usuario);
+        Usuario saved = usuariousRepository.save(usuario);
         if (saved == null) {
             return ResponseEntity.noContent().build();
         }
@@ -48,7 +48,7 @@ public class UsuarioResources {
 
     @GetMapping
     public ResponseEntity<List<Usuario>> get() {
-        List<Usuario> usuarioList = usuriousRepository.findAll();
+        List<Usuario> usuarioList = usuariousRepository.findAll();
         if (usuarioList.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -57,7 +57,7 @@ public class UsuarioResources {
 
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> getById(@PathVariable("id") Long id) {
-        Optional<Usuario> usuarioList = usuriousRepository.findById(String.valueOf(id));
+        Optional<Usuario> usuarioList = usuariousRepository.findById(String.valueOf(id));
         if (!usuarioList.isPresent()) {
             return ResponseEntity.noContent().build();
         }
@@ -66,7 +66,7 @@ public class UsuarioResources {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> remover(@PathVariable("id") Long id) {
-        usuriousRepository.deleteById(String.valueOf(id));
+        usuariousRepository.deleteById(String.valueOf(id));
         return ResponseEntity.noContent().build();
     }
 }

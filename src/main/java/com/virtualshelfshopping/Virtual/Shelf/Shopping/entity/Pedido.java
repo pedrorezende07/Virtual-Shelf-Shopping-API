@@ -9,13 +9,13 @@ import java.util.List;
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codPedido;
-
-    private float precoTotal;
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+
+    private float precoTotal;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ItemPedido> itensPedido;
@@ -23,11 +23,11 @@ public class Pedido {
     // Getters and setters
 
     public int getCodPedido() {
-        return codPedido;
+        return id;
     }
 
     public void setCodPedido(int codPedido) {
-        this.codPedido = codPedido;
+        this.id = codPedido;
     }
 
     public float getPrecoTotal() {

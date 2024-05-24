@@ -25,7 +25,7 @@ public class ProdutoResources {
             return ResponseEntity.noContent().build();
         }
 
-        URI uri = RestUtil.getUri(saved.getCodProduto());
+        URI uri = RestUtil.getUri(saved.getId());
         return ResponseEntity.created(uri).body(saved);
     }
 
@@ -42,6 +42,7 @@ public class ProdutoResources {
         produtoAtualizado.setValor(produto.getValor());
         produtoAtualizado.setDescricao(produto.getDescricao());
         produtoAtualizado.setCategoria(produto.getCategoria());
+        produtoAtualizado.setSubcategoria(produto.getSubcategoria()); // Atualiza a subcategoria
 
         produtoRepository.save(produtoAtualizado);
 
@@ -59,7 +60,7 @@ public class ProdutoResources {
 
     @GetMapping("/{id}")
     public ResponseEntity<Produto> getById(@PathVariable("id") Long id) {
-        Optional<Produto> produto = produtoRepository.findById(id.intValue());
+        Optional<Produto> produto = produtoRepository.findById(Math.toIntExact(id));
         if (!produto.isPresent()) {
             return ResponseEntity.noContent().build();
         }

@@ -8,26 +8,27 @@ import jakarta.persistence.*;
 public class ItemPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    private int quantidade;
-    private float subTotal;
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "id_pedido")
     private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "cod_produto")
+    @JoinColumn(name = "id_produto")
     private Produto produto;
+
+    private int quantidade;
+
+    private float subTotal;
 
     // Getters and setters
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

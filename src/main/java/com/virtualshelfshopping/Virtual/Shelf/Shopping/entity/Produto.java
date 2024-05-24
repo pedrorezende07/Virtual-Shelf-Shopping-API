@@ -1,40 +1,42 @@
 package com.virtualshelfshopping.Virtual.Shelf.Shopping.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
-import java.util.List;
 
 @Entity
 @Table(name = "produto")
 public class Produto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_produto")
-    private Long codProduto;
+    @Column(name = "id")
+    private Long id;
 
     private String nome;
-    private float valor;
+
     private String descricao;
 
+    private float valor;
+
     @ManyToOne
-    @JoinColumn(name = "cod_categoria")
+    @JoinColumn(name = "id_estoque")
+    private Estoque estoque;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
     @ManyToOne
-    @JoinColumn(name = "cod_estoque")
-    private Estoque estoque;
+    @JoinColumn(name = "id_subcategoria")
+    private Subcategoria subcategoria;
 
     // Getters and setters
 
-
-    public Long getCodProduto() {
-        return codProduto;
+    public Long getId() {
+        return id;
     }
 
-    public void setCodProduto(Long codProduto) {
-        this.codProduto = codProduto;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -69,6 +71,14 @@ public class Produto {
         this.categoria = categoria;
     }
 
+    public Subcategoria getSubcategoria() {
+        return subcategoria;
+    }
+
+    public void setSubcategoria(Subcategoria subcategoria) {
+        this.subcategoria = subcategoria;
+    }
+
     public Estoque getEstoque() {
         return estoque;
     }
@@ -78,7 +88,7 @@ public class Produto {
     }
 
     public void update(Long id, Produto produto) {
-        this.codProduto = id;
+        this.id = id;
         this.nome = produto.getNome();
         this.valor = produto.getValor();
         this.descricao = produto.getDescricao();
