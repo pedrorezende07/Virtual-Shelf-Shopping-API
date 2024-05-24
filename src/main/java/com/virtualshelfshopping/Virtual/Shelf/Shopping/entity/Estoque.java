@@ -10,7 +10,7 @@ public class Estoque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int quantProduto;
+    private int qtdProduto;
 
     // Getters and setters
 
@@ -23,10 +23,10 @@ public class Estoque {
     }
 
     public int getQuantProduto() {
-        return quantProduto;
+        return qtdProduto;
     }
 
     public void setQuantProduto(int quantProduto) {
-        this.quantProduto = quantProduto;
+        this.qtdProduto = quantProduto;
     }
 }

@@ -27,7 +27,7 @@ public class CategoriaResources {
             return ResponseEntity.noContent().build();
         }
 
-        URI uri = RestUtil.getUri(saved.getCodCategoria());
+        URI uri = RestUtil.getUri(saved.getId());
         return ResponseEntity.created(uri).body(saved);
     }
 
