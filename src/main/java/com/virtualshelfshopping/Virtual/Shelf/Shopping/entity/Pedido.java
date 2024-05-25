@@ -1,7 +1,6 @@
 package com.virtualshelfshopping.Virtual.Shelf.Shopping.entity;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -9,7 +8,7 @@ import java.util.List;
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
@@ -22,12 +21,12 @@ public class Pedido {
 
     // Getters and setters
 
-    public int getCodPedido() {
+    public long getId() {
         return id;
     }
 
-    public void setCodPedido(int codPedido) {
-        this.id = codPedido;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public float getPrecoTotal() {

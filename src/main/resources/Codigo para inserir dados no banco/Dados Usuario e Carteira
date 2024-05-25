@@ -1,0 +1,24 @@
+#usuario e carteira
+
+INSERT INTO usuario (cpf, data_nascimento, email, nome, senha, telefone)
+VALUES ('12089258659', '2000-11-07', 'pedrohgrezende@gmail.com', 'Pedro Rezende', '12345678', '34996470711');
+INSERT INTO usuario (cpf, data_nascimento, email, nome, senha, telefone)
+VALUES ('12345678901', '1990-01-15', 'maria.silva@gmail.com', 'Maria Silva', 'senha123', '34998765432');
+INSERT INTO usuario (cpf, data_nascimento, email, nome, senha, telefone)
+VALUES ('10987654321', '1985-05-22', 'joao.souza@yahoo.com', 'João Souza', 'senha456', '34991234567');
+INSERT INTO usuario (cpf, data_nascimento, email, nome, senha, telefone)
+VALUES ('23456789012', '1995-09-10', 'ana.oliveira@outlook.com', 'Ana Oliveira', 'senha789', '34992345678');
+INSERT INTO usuario (cpf, data_nascimento, email, nome, senha, telefone)
+VALUES ('34567890123', '2000-12-30', 'carlos.santos@hotmail.com', 'Carlos Santos', 'senha012', '34993456789');
+INSERT INTO usuario (cpf, data_nascimento, email, nome, senha, telefone)
+VALUES ('45678901234', '1975-03-18', 'fernanda.costa@gmail.com', 'Fernanda Costa', 'senha345', '34994567890');
+INSERT INTO usuario (cpf, data_nascimento, email, nome, senha, telefone)
+VALUES ('56789012345', '1988-07-25', 'ricardo.lima@uol.com.br', 'Ricardo Lima', 'senha678', '34995678901');
+
+INSERT INTO carteira (saldo, id_usuario) VALUES (10000,1);
+INSERT INTO carteira (saldo, id_usuario) VALUES (1273,2);
+INSERT INTO carteira (saldo, id_usuario) VALUES (2136,3);
+INSERT INTO carteira (saldo, id_usuario) VALUES (1425,4);
+INSERT INTO carteira (saldo, id_usuario) VALUES (1524,5);
+INSERT INTO carteira (saldo, id_usuario) VALUES (4623,6);
+INSERT INTO carteira (saldo, id_usuario) VALUES (344,7);
