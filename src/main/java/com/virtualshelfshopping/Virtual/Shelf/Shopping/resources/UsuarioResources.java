@@ -19,7 +19,7 @@ public class UsuarioResources {
     private UsuarioRepository usuariousRepository;
 
     @PostMapping
-    public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> salvarUsuario(@RequestBody Usuario usuario) {
         Usuario saved = usuariousRepository.save(usuario);
         if (saved == null) {
             return ResponseEntity.noContent().build();
@@ -30,7 +30,7 @@ public class UsuarioResources {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> alterar(@PathVariable("id") Long id,
+    public ResponseEntity<Usuario> alterarUsuario(@PathVariable("id") Long id,
                                            @RequestBody Usuario usuario) {
         Optional<Usuario> usuarioDoBanco = usuariousRepository.findById(String.valueOf(id));
         if (usuarioDoBanco.isEmpty()) {

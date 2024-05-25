@@ -1,7 +1,7 @@
 package com.virtualshelfshopping.Virtual.Shelf.Shopping.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "carteira")
@@ -13,8 +13,10 @@ public class Carteira {
     private float saldo;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_usuario")
+    @JsonBackReference
     private Usuario usuario;
+
 
     // Métodos debitar e adicionar
     public void debitar(float valor) {

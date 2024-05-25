@@ -2,7 +2,6 @@ package com.virtualshelfshopping.Virtual.Shelf.Shopping.entity;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "item_pedido")
 public class ItemPedido {
@@ -11,11 +10,11 @@ public class ItemPedido {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_pedido")
+    @JoinColumn(name = "id_pedido", referencedColumnName = "id")
     private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "id_produto")
+    @JoinColumn(name = "id_produto", referencedColumnName = "id")
     private Produto produto;
 
     private int quantidade;
