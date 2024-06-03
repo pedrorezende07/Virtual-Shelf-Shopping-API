@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/carteiras")
+@CrossOrigin(origins = "http://localhost:9000")
 public class CarteiraResources {
 
     @Autowired

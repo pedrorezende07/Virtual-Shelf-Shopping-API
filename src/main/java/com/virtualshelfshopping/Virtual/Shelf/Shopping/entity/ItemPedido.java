@@ -1,5 +1,6 @@
 package com.virtualshelfshopping.Virtual.Shelf.Shopping.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +12,7 @@ public class ItemPedido {
 
     @ManyToOne
     @JoinColumn(name = "id_pedido", referencedColumnName = "id")
+    @JsonBackReference
     private Pedido pedido;
 
     @ManyToOne
