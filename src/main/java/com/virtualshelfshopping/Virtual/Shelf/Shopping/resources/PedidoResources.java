@@ -49,11 +49,11 @@ public class PedidoResources {
 
     @GetMapping
     public ResponseEntity<List<Pedido>> get(){
-        List<Pedido> categoriaList = pedidoRepository.findAll();
-        if(categoriaList.isEmpty()){
+        List<Pedido> pedidosList = pedidoRepository.findAll();
+        if(pedidosList.isEmpty()){
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(categoriaList);
+        return ResponseEntity.ok(pedidosList);
     }
 
     @GetMapping("/{id}")

@@ -1,5 +1,6 @@
 package com.virtualshelfshopping.Virtual.Shelf.Shopping.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Pedido {
     private float precoTotal;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<ItemPedido> itensPedido;
 
     // Getters and setters

@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "carteira")
 public class Carteira {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
