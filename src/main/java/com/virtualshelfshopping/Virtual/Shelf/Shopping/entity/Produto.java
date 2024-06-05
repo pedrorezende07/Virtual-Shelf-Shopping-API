@@ -29,6 +29,8 @@ public class Produto {
     @JoinColumn(name = "id_subcategoria")
     private Subcategoria subcategoria;
 
+    private String url;
+
     // Getters and setters
 
     public Long getId() {
@@ -94,5 +96,13 @@ public class Produto {
         this.descricao = produto.getDescricao();
         this.categoria = produto.getCategoria();
         this.estoque = produto.getEstoque();
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
