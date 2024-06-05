@@ -81,22 +81,4 @@ public class UsuarioResources {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/check-duplicity")
-    public ResponseEntity<Map<String, Boolean>> checkDuplicity(@RequestParam String field, @RequestParam String value) {
-        boolean exists = false;
-        switch (field) {
-            case "cpf":
-                exists = usuarioRepository.existsByCpf(value);
-                break;
-            case "email":
-                exists = usuarioRepository.existsByEmail(value);
-                break;
-            case "telefone":
-                exists = usuarioRepository.existsByTelefone(value);
-                break;
-        }
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("exists", exists);
-        return ResponseEntity.ok(response);
-    }
 }
