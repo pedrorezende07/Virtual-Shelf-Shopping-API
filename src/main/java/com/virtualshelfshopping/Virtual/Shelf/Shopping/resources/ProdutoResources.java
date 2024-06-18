@@ -1,7 +1,9 @@
 package com.virtualshelfshopping.Virtual.Shelf.Shopping.resources;
 
 import com.virtualshelfshopping.Virtual.Shelf.Shopping.entity.Produto;
+import com.virtualshelfshopping.Virtual.Shelf.Shopping.entity.Estoque; // Certifique-se de importar a entidade Estoque
 import com.virtualshelfshopping.Virtual.Shelf.Shopping.repository.ProdutoRepository;
+import com.virtualshelfshopping.Virtual.Shelf.Shopping.repository.EstoqueRepository; // Importe o repositório de estoque
 import com.virtualshelfshopping.Virtual.Shelf.Shopping.util.RestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,9 @@ public class ProdutoResources {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private EstoqueRepository estoqueRepository; // Injetar o repositório de estoque
 
     @PostMapping
     public ResponseEntity<Produto> salvarProduto(@RequestBody Produto produto) {
@@ -43,6 +48,13 @@ public class ProdutoResources {
         produtoAtualizado.setDescricao(produto.getDescricao());
         produtoAtualizado.setCategoria(produto.getCategoria());
         produtoAtualizado.setSubcategoria(produto.getSubcategoria()); // Atualiza a subcategoria
+
+        // Atualiza o estoque
+        Estoque estoque = produtoAtualizado.getEstoque();
+        if (estoque != null && produto.getEstoque() != null) {
+            estoque.setQuantProduto(produto.getEstoque().getQuantProduto());
+            estoqueRepository.save(estoque); // Salva as mudanças no estoque
+        }
 
         produtoRepository.save(produtoAtualizado);
 
